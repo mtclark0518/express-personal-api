@@ -1,7 +1,13 @@
 // require express and other modules
 var express = require('express'),
-    app = express();
+    app = express(),
     ejs = require('ejs');
+
+//
+// use ejs
+app.set('views', __dirname);
+app.engine('ejs', require('ejs').renderFile);
+app.set('view engine', 'ejs');
 
 // parse incoming urlencoded form data
 // and populate the req.body object
@@ -49,6 +55,13 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
       {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
     ]
+  });
+});
+
+app.get('/api/profile', function(req, res) {
+  res.json({
+    message: "Welcome to my personal api! Here's what you need to know!",
+
   });
 });
 
