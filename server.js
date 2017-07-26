@@ -61,7 +61,10 @@ app.get('/api', function api_index(req, res) {
 app.get('/api/profile', function(req, res) {
   res.json({
     message: "Welcome to my personal api! Here's what you need to know!",
-
+    name : "Tyler Clark",
+    github_link : url("https://github.com/mtclark0518"),
+    github_profile_image : url("https://avatars2.githubusercontent.com/u/22016953?v=4&u=a2b5d9f019c0f3e541100c330cd53f95c9c540ca&s=400"),
+    current_city : "Denver, CO"
   });
 });
 
