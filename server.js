@@ -64,7 +64,19 @@ app.get('/api/profile', function(req, res) {
     name : "Tyler Clark",
     github_link : "https://github.com/mtclark0518",
     github_profile_image : "https://avatars2.githubusercontent.com/u/22016953?v=4&u=a2b5d9f019c0f3e541100c330cd53f95c9c540ca&s=400",
-    current_city : "Denver, CO"
+    current_city : "Denver, CO",
+    pets : [
+      {
+        type: "dog", 
+        breed: "West-Highland White Terrier", 
+        name: "Scout",
+        size: "small"
+      }, {
+        type: "dog",
+        breed: "mutt",
+        name: "Ender",
+        size: "medium"
+      }]
   }]);
 });
 
