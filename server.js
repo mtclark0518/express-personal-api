@@ -91,7 +91,7 @@ app.get('/api/coasters', function db_index(req, res){
   });
 });
 
-app.get('/api/coasters/new', function(req, res) { //look at that controller
+app.post('/api/coasters/new', function(req, res) { //look at that controller
   res.sendFile(__dirname+'/views/partials/newCoaster.html'); 
 });
 
