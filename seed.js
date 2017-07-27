@@ -7,33 +7,28 @@ var coaster_list = [{
 	type: "Steel",
 	park: "Busch Gardens",
 	state: "FL",
-	id: 1
 	// image: String
 },{
 	name: "Montu",
 	type: "Inverted Steel",
 	park: "Busch Gardens",
 	state: "FL",
-	id: 2,
 },{
 	name: "Incredible Hulk",
 	type: "Steel",
 	park: "Islands of Adventure",
 	state: "FL",
-	id: 3,
 },{
 	name: "Batman",
 	type: "Inverted Steel",
 	park: "Kings Dominion",
 	state: "VA",
-	id: 4
 
 },{
 	name: "Sling Shot",
 	type: "Steel",
 	park: "Elitch Gardens",
 	state: "CO",
-	id: 5
 
 }];
 
@@ -46,6 +41,7 @@ db.Coaster.remove({}, function(err, coasters) {
 			return;
 		}
 		console.log('recreated all coasters');
+		console.log(coasters);
 		console.log("created " + coasters.length + " coasters");
 	});
 

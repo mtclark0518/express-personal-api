@@ -48,7 +48,7 @@ app.get('/api', function api_index(req, res) {
   res.json({
     message: "Welcome to my personal api! Here's what you need to know!",
     documentation_url: "https://github.com/mtclark0518/express-personal-api/blob/master/README.md",
-    base_url: "https://aqueous-waters-33999.herokuapp.com", // CHANGE ME
+    base_url: "https://aqueous-waters-33999.herokuapp.com",
     
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
@@ -83,7 +83,7 @@ app.get('/api/profile', function(req, res) {
 });
 
 
-//GET All Coasters
+//INDEX
 app.get('/api/coasters', function db_index(req, res){
   db.Coaster.find(function(err, coasters){
     if(err) {return console.log(err + " error"); }
@@ -95,8 +95,8 @@ app.get('/api/coasters/new', function(req, res) { //look at that controller
   res.sendFile(__dirname+'/views/partials/newCoaster.html'); 
 });
 
-//CREATE Coaster
-app.post('/api/coasters', function (req, res) {
+//CREATE
+app.post('/api/coasters/new', function (req, res) {
   // create new book with form data (`req.body`)
   var newCoaster = new db.Coaster({
     name: req.body.name,
@@ -104,9 +104,9 @@ app.post('/api/coasters', function (req, res) {
     park: req.body.park,
     state: req.body.state
   });
-  newCoaster.save(function(err, coaster) {
+  newCoaster.save(function(err) {
     if(err){
-      return console.log(err);
+      res.json(err);
     }
     res.json(coaster);
   });
