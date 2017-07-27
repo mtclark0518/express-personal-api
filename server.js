@@ -91,7 +91,28 @@ app.get('/api/coasters', function(req, res){
   });
 });
 
-// delete coaster
+//CREATE Coaster
+app.post('/api/coasters', function (req, res) {
+  // create new book with form data (`req.body`)
+  var newCoaster = new db.Coaster({
+    name: req.body.name,
+    type: req.body.type,
+    park: req.body.park,
+    state: req.body.state
+  });
+  newCoaster.save(function(err, coaster) {
+    if(err){
+      return console.log(err);
+    }
+    res.json(coaster);
+  });
+});
+
+app.put('/api/coasters/:id', function(req, res) {
+  var coasterId = " ";
+});
+
+// DELETE Coaster
 app.delete('/api/coaster/:name', function (req, res) {
   // get book id from url params (`req.params`)
   console.log('books delete', req.params);
