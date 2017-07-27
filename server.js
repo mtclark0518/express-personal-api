@@ -20,7 +20,7 @@ app.use(bodyParser.json());
  * DATABASE *
  ************/
 
-// var db = require('./models');
+var db = require('./models');
 
 /**********
  * ROUTES *
@@ -35,7 +35,7 @@ app.use(express.static('public'));
  */
 
 app.get('/', function homepage(req, res) {
-  res.sendFile(__dirname + '/views/index.ejs');
+  res.sendFile(__dirname + '/views/index.html');
 });
 
 
@@ -52,8 +52,10 @@ app.get('/api', function api_index(req, res) {
     
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "My Profile"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "GET", path: "/api/profile", description: "My Profile"}, 
+      {method: "GET", path: "/api/coasters", description: "View the coaster collection"},
+      {method: "POST", path: "/api/coasters/new", description: "Add a new coaster to the database"},
+
     ]
   });
 });
@@ -79,6 +81,12 @@ app.get('/api/profile', function(req, res) {
       }]
   }]);
 });
+
+app.get('/api/coasters', function(req, res){
+  //display the seed data from the db
+  console.log("inside the place where stuff will go");
+});
+
 
 /**********
  * SERVER *

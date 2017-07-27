@@ -3,10 +3,11 @@ var mongoose = require('mongoose'),
 	
 
 var coasterSchema = new Schema({
+	name: String,
 	type: String,
 	park: String,
 	state: String,
-	image: String
+	// image: String
 });
 
 var Coaster = mongoose.model('Coaster', coasterSchema);
