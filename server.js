@@ -84,11 +84,15 @@ app.get('/api/profile', function(req, res) {
 
 
 //GET All Coasters
-app.get('/api/coasters', function(req, res){
+app.get('/api/coasters', function db_index(req, res){
   db.Coaster.find(function(err, coasters){
     if(err) {return console.log(err + " error"); }
     res.json(coasters);
   });
+});
+
+app.get('/api/coasters/new', function(req, res) { //look at that controller
+  res.sendFile(__dirname+'/views/partials/newCoaster.html'); 
 });
 
 //CREATE Coaster

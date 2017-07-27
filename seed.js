@@ -7,12 +7,14 @@ var coaster_list = [{
 	type: "Steel",
 	park: "Busch Gardens",
 	state: "FL",
+	id: 1
 	// image: String
 },{
 	name: "Montu",
 	type: "Inverted Steel",
 	park: "Busch Gardens",
-	state: "FL"
+	state: "FL",
+	id: 1
 },{
 	name: "Incredible Hulk",
 	type: "Steel",
