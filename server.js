@@ -82,6 +82,8 @@ app.get('/api/profile', function(req, res) {
   }]);
 });
 
+
+//GET All Coasters
 app.get('/api/coasters', function(req, res){
   db.Coaster.find(function(err, coasters){
     if(err) {return console.log(err + " error"); }
@@ -89,6 +91,16 @@ app.get('/api/coasters', function(req, res){
   });
 });
 
+// delete coaster
+app.delete('/api/coaster/:name', function (req, res) {
+  // get book id from url params (`req.params`)
+  console.log('books delete', req.params);
+  var coasterName = req.params.name;
+  // find the index of the book we want to remove
+  db.Coaster.findOneAndRemove({ name: coasterName }, function (err, deletedCoaster) {
+    res.json(deletedCoaster);
+  });
+});
 
 /**********
  * SERVER *
