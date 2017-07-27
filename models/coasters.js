@@ -6,7 +6,8 @@ var CoasterSchema = new Schema({
 	name: String,
 	type: String,
 	park: String,
-	state: String
+	state: String,
+	id: Number
 });
 
 var Coaster = mongoose.model('Coaster', CoasterSchema);

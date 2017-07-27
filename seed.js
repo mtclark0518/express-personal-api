@@ -14,22 +14,27 @@ var coaster_list = [{
 	type: "Inverted Steel",
 	park: "Busch Gardens",
 	state: "FL",
-	id: 1
+	id: 2,
 },{
 	name: "Incredible Hulk",
 	type: "Steel",
 	park: "Islands of Adventure",
-	state: "FL"
+	state: "FL",
+	id: 3,
 },{
 	name: "Batman",
 	type: "Inverted Steel",
 	park: "Kings Dominion",
-	state: "VA"
+	state: "VA",
+	id: 4
+
 },{
 	name: "Sling Shot",
 	type: "Steel",
 	park: "Elitch Gardens",
-	state: "CO"
+	state: "CO",
+	id: 5
+
 }];
 
 
