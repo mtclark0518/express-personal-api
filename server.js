@@ -97,7 +97,7 @@ app.get('/api/coasters/new', function(req, res) { //look at that controller
   res.sendFile(__dirname+'/views/partials/newCoaster.html'); 
 });
 
-app.post('/api/coasters/new', function (req, res) {
+app.post('/api/coasters/', function (req, res) {
   // create new book with form data (`req.body`)
   var newCoaster = new db.Coaster({
     name: req.body.name,
@@ -115,8 +115,8 @@ app.post('/api/coasters/new', function (req, res) {
 
 
 //UPDATE
-app.put('/api/coasters/:id', function(req, res) {
-  var coasterId = " ";
+app.put('/api/coasters/:name', function(req, res) {
+  var coasterName = req.params.name;
 });
 
 // DELETE Coaster
