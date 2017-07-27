@@ -33,17 +33,27 @@ var coaster_list = [{
 
 
 db.Coaster.remove({}, function(err, coasters) {
-	var coaster;
-	coaster_list.forEach(function (coasterProps) {
-		coaster = new db.Coaster({
-			name: coasterProps.name,
-			type: coasterProps.type,
-			park: coasterProps.park,
-			state: coasterProps.state
-		});
-		console.log(coaster);
-
+	db.Coaster.create(coaster_list, function(err, coasters){
+		if(err){
+			console.log(err);
+			return;
+		}
+		console.log('recreated all coasters');
+		console.log("created " + coasters.length + " coasters");
 	});
+
+
+	// var coaster;
+	// coaster_list.forEach(function (coasterProps) {
+	// 	coaster = new db.Coaster({
+	// 		name: coasterProps.name,
+	// 		type: coasterProps.type,
+	// 		park: coasterProps.park,
+	// 		state: coasterProps.state
+	// 	});
+		// console.log(coaster);
+
+	// });
 });
 
 
