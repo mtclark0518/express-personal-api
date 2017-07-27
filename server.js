@@ -85,7 +85,8 @@ app.get('/api/profile', function(req, res) {
 app.get('/api/coasters', function(req, res){
   //display the seed data from the db
   db.Coaster.find(function(err, coasters){
-
+    if(err) {return console.log(err + " error");}
+    res.json(coasters);
   });
   console.log("inside the place where stuff will go");
 });

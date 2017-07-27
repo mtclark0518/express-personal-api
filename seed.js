@@ -30,39 +30,24 @@ var coaster_list = [{
 	state: "CO"
 }];
 
-// db.Campsite.create(new_campsite, function(err, campsite){
-//   if (err){
-//     return console.log("Error:", err);
-//   }
+
 
 db.Coaster.remove({}, function(err, coasters) {
+	var coaster;
 	coaster_list.forEach(function (coasterProps) {
-		var coaster = new db.Coaster({
+		coaster = new db.Coaster({
 			name: coasterProps.name,
 			type: coasterProps.type,
 			park: coasterProps.park,
 			state: coasterProps.state
 		});
-		
+		console.log(coaster);
+
 	});
 });
 
 
 
-//   console.log("Created new campsite", campsite._id)
-//   process.exit(); // we're all done! Exit the program.
-// })
 
 
-
-
-// db.Coaster.create(coaster_list, function(err, coaster) {
-// 	if (err) {
-// 		return console.log("err: " + err);
-		
-// 	}  
-//     console.log('recreated all coasters');
-//     console.log("created", coasters.length, "coasters");
-// 	});
-// });
 
