@@ -28,9 +28,7 @@ var coaster_list = [{
 	type: "Steel",
 	park: "Elitch Gardens",
 	state: "CO"
-}
-	
-];
+}];
 
 // db.Campsite.create(new_campsite, function(err, campsite){
 //   if (err){
@@ -38,17 +36,33 @@ var coaster_list = [{
 //   }
 
 db.Coaster.remove({}, function(err, coasters) {
-	db.Coaster.create(coaster_list, function(err, coaster) {
-	if (err) {
-		console.log("err: " + err);
-		return;
-	}  
-    console.log('recreated all coasters');
-    console.log("created", coasters.length, "coasters");
+	coaster_list.forEach(function (coasterProps) {
+		var coaster = new db.Coaster({
+			name: coasterProps.name,
+			type: coasterProps.type,
+			park: coasterProps.park,
+			state: coasterProps.state
+		});
+		
 	});
 });
+
 
 
 //   console.log("Created new campsite", campsite._id)
 //   process.exit(); // we're all done! Exit the program.
 // })
+
+
+
+
+// db.Coaster.create(coaster_list, function(err, coaster) {
+// 	if (err) {
+// 		return console.log("err: " + err);
+		
+// 	}  
+//     console.log('recreated all coasters');
+//     console.log("created", coasters.length, "coasters");
+// 	});
+// });
+
