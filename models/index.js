@@ -4,4 +4,4 @@ mongoose.connect( process.env.MONGODB_URI ||
                   process.env.MONGOHQ_URL || 
                   "mongodb://localhost/personal-api");
 
-module.exports.Coaster = require("./coasters.js.");
+module.exports.Coaster = require("./coasters.js");

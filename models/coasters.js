@@ -1,12 +1,12 @@
-var mongoose = require('mongoose'),
-	Schema = mongoose.Schema;
+var mongoose = require('mongoose');
+var	Schema = mongoose.Schema;
 	
 
 var coasterSchema = new Schema({
 	name: String,
 	type: String,
 	park: String,
-	state: String,
+	state: String
 	// image: String
 });
 
