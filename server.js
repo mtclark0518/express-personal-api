@@ -97,7 +97,7 @@ app.get('/api/coasters/new', function(req, res) { //look at that controller
   res.sendFile(__dirname+'/views/partials/newCoaster.html'); 
 });
 
-app.post('/api/coasters/', function (req, res) {
+app.post('/api/coasters/new', function (req, res) {
   // create new book with form data (`req.body`)
   var newCoaster = new db.Coaster({
     name: req.body.name,
