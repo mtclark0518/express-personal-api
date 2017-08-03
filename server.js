@@ -34,11 +34,16 @@ app.use(express.static('public'));
  * HTML Endpoints
  */
 
-app.get('/', function homepage(req, res) {
+app.get('/', function(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-
+app.get('/api/coasters/new', function(req, res) { //look at that controller
+  res.sendFile(__dirname + '/views/partials/newCoaster.html'); 
+});
+app.get('/api/coasters/edit', function(req, res) { //look at that controller
+  res.sendFile(__dirname + '/views/partials/edit.html'); 
+});
 /*
  * JSON API Endpoints
  */
@@ -54,7 +59,11 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "My Profile"}, 
       {method: "GET", path: "/api/coasters", description: "View the coaster collection"},
+      {method: "GET", path: "/api/coasters/:name", description: "View one coaster"},
       {method: "POST", path: "/api/coasters/new", description: "Add a new coaster to the database"},
+      {method: "PUT", path: "/api/coaster/:name", description: "update a coaster"},
+      {method: "DELETE", path: "/api/coaster/:name", description: "delete a coaster" },
+
 
     ]
   });
@@ -91,38 +100,55 @@ app.get('/api/coasters', function db_index(req, res){
   });
 });
 
-
-//CREATE
-app.get('/api/coasters/new', function(req, res) { //look at that controller
-  res.sendFile(__dirname+'/views/partials/newCoaster.html'); 
+//SHOW ONE
+app.get('/api/coasters/:name', function(req, res) {
+  var thisOne = req.params.name;
+  db.Coaster.findOne({ name: thisOne }, function(err, coaster) {
+    if (err) return console.log("error: " + err);
+    res.json(coaster);
+  });
 });
 
+
+//CREATE
 app.post('/api/coasters/new', function (req, res) {
-  // create new book with form data (`req.body`)
   var newCoaster = new db.Coaster({
     name: req.body.name,
     type: req.body.type,
     park: req.body.park,
     state: req.body.state
   });
-  newCoaster.save(function(err) {
-    if(err){
-      res.json(err);
-    }
+  newCoaster.save(function(err, coaster) {
+    if(err) return console.log("error: " + err);
     res.json(coaster);
+    console.log(coaster);
   });
 });
 
 
-//UPDATE
+// UPDATE
 app.put('/api/coasters/:name', function(req, res) {
-  var coasterName = req.params.name;
+  var name = req.params.name;
+  db.Coaster.findOne({ name: name }, function (err, coaster) {
+    if (err) return console.log("error: " + err);
+    coaster.name = req.body.name;
+    coaster.type = req.body.type;
+    coaster.park = req.body.park;
+    coaster.state = req.body.state;
+    console.log(coaster);
+    coaster.save(function (err, coaster) {
+      if (err) return console.log(err + " = Error");
+      res.json(coaster);
+    });
+  });
 });
 
+
+
 // DELETE Coaster
-app.delete('/api/coaster/:name', function (req, res) {
+app.delete('/api/coasters/:name', function (req, res) {
   // get book id from url params (`req.params`)
-  console.log('books delete', req.params);
+  console.log('coaster delete', req.params.name);
   var coasterName = req.params.name;
   // find the index of the book we want to remove
   db.Coaster.findOneAndRemove({ name: coasterName }, function (err, deletedCoaster) {
