@@ -147,11 +147,13 @@ app.put('/api/coasters/:name', function(req, res) {
 
 // DELETE Coaster
 app.delete('/api/coasters/:name', function (req, res) {
+  console.log("req.body.name= " + req.body.name);
+  var actualCoasterName = req.body.name;
   // get book id from url params (`req.params`)
-  console.log('coaster delete', req.params.name);
-  var coasterName = req.params.name;
+  console.log('req.params.name= ' + req.params.name);
+  // var coasterName = req.params.name;
   // find the index of the book we want to remove
-  db.Coaster.findOneAndRemove({ name: coasterName }, function (err, deletedCoaster) {
+  db.Coaster.findOneAndRemove({ name: actualCoasterName }, function (err, deletedCoaster) {
     res.json(deletedCoaster);
   });
 });
