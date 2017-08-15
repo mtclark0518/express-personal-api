@@ -57,11 +57,14 @@ app.get('/api', function api_index(req, res) {
 
         endpoints: [
             { method: "GET", path: "/api", description: "Describes all available endpoints" },
+           
             { method: "GET", path: "/api/profile", description: "My Profile" },
+            
             { method: "GET", path: "/api/coasters", description: "View the coaster collection" },
+            { method: "POST", path: "/api/coasters", description: "create new coaster and save to the database" },
+            
             { method: "GET", path: "/api/coasters/:name", description: "View one coaster" },
-            { method: "POST", path: "/api/coasters", description: "Add a new coaster to the database" },
-            { method: "PUT", path: "/api/coaster/:name", description: "update a coaster" },
+            { method: "PUT", path: "/api/coasters/:name", description: "update a coaster" },
             { method: "DELETE", path: "/api/coaster/:name", description: "delete a coaster" },
 
 
